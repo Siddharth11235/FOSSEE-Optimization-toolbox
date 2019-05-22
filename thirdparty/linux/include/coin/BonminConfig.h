@@ -5,7 +5,7 @@
 #define __CONFIG_BONMIN_H__
 
 /* Version number of project */
-#define BONMIN_VERSION "1.8.6"
+#define BONMIN_VERSION "1.8.7"
 
 /* Major Version number of project */
 #define BONMIN_VERSION_MAJOR 1
@@ -14,6 +14,6 @@
 #define BONMIN_VERSION_MINOR 8
 
 /* Release Version number of project */
-#define BONMIN_VERSION_RELEASE 6
+#define BONMIN_VERSION_RELEASE 7
 
 #endif
