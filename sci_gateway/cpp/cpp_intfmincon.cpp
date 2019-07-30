@@ -32,6 +32,7 @@ extern  "C"
 #include <localization.h>
 #include <sciprint.h>
 #include <wchar.h>
+#include <stdint.h>
 
 
 const char fname[] = "inter_fmincon";
@@ -46,7 +47,8 @@ int cpp_intfmincon(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt op
 	// Input arguments
 
 	Number *x0 = NULL, *lb = NULL, *ub = NULL,*conLb = NULL, *conUb = NULL,*LC = NULL;
-	static unsigned int nVars = 0,nCons = 0, nCons2= 0;
+    static unsigned int nVars = 0;
+    int nCons = 0, nCons2= 0;
 	int x0_rows, x0_cols,intconSize, intconSize2;
 	Number *intcon = NULL,*options=NULL, *ifval=NULL;
 	
@@ -149,6 +151,8 @@ int cpp_intfmincon(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt op
         Scierror(999, "%s: Wrong type for input argument #%d: A list expected.\n", fname, 12);
         return 1;
     }
+   
+
 
 	scilabVar temp1 = scilab_getListItem( env, in[11], 1);
 	scilabVar temp2 = scilab_getListItem( env, in[11], 3);
@@ -174,7 +178,8 @@ int cpp_intfmincon(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt op
 	nVars = x0_rows;
 	
 	
-	SmartPtr<minconTMINLP> tminlp = new minconTMINLP(env, nVars,x0,lb,ub,(unsigned int)LC,nCons,conLb,conUb,intconSize,intcon);
+	SmartPtr<minconTMINLP> tminlp = new minconTMINLP(env, nVars,x0,lb,ub,(uintptr_t)LC,nCons,conLb,conUb,intconSize,intcon);
+
 
 
 	BonminSetup bonmin;
@@ -234,5 +239,7 @@ int cpp_intfmincon(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt op
 
 	return 0;
 	}
+
 }
+
 
