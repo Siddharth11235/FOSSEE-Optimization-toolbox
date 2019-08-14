@@ -23,7 +23,6 @@
 #include "BonEcpCuts.hpp"
 #include "BonOaNlpOptim.hpp"
 
-#include "sci_iofunc.hpp"
 extern  "C"
 {
 #include <api_scilab.h>

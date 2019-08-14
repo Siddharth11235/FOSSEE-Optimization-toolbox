@@ -17,6 +17,7 @@ extern sym_environment* global_sym_env; //defined in globals.cpp
 
 extern "C" {
 #include "api_scilab.h"
+#include "api_stack_sparse.h"
 #include "Scierror.h"
 #include "sciprint.h"
 #include "BOOL.h"
@@ -290,83 +291,5 @@ int sci_sym_loadProblemBasic(scilabEnv env, int nin, scilabVar* in, int nopt, sc
 		return 1;
 	return 0;
 }
-
-//advanced problem loader, expects sparse matrix. For use with larger problems (>10 vars)
-/*
-const char fname[] = "sym_loadProblem";
-int sci_sym_loadProblem(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt opt, int nout, scilabVar* out)
-{
-	int retVal,nonZeros,*itemsPerRow,*colIndex,matrixIter,newPos,*oldRowIndex,*colStartCopy;
-	double *data;
-	
-	if(commonCodePart1())
-		return 1;
-		
-	//get input 8: matrix of constraint equation coefficients
-	sciErr = getVarAddressFromPosition(pvApiCtx, 8, &varAddress);
-	if (sciErr.iErr)
-	{
-		printError(&sciErr, 0);
-		cleanupBeforeExit();return 1;
-	}
-	
-	if(!(numConstr == 0))
-	{
-
-	if ( (!isSparseType(pvApiCtx,varAddress) ||  isVarComplex(pvApiCtx,varAddress)) && (numConstr == 0))
-	{
-		Scierror(999, "Wrong type for input argument #8: A sparse matrix of doubles is expected.\n");
-		cleanupBeforeExit();return 1;
-	}
-	}
-	sciErr = getSparseMatrix(pvApiCtx,varAddress,&inputMatrixRows,&inputMatrixCols,&nonZeros,&itemsPerRow,&colIndex,&data);
-	if (sciErr.iErr)
-	{
-		printError(&sciErr, 0);
-		cleanupBeforeExit();
-		return 1;
-	}
-	if(inputMatrixRows!=numConstr || inputMatrixCols!=numVars)
-	{
-		Scierror(999, "Wrong type for input argument #8: Incorrectly sized matrix.\n");
-		cleanupBeforeExit();
-		return 1;
-	}
-	
-	//convert SciLab format sparse matrix into the format required by Symphony
-	conMatrix=new double[nonZeros]; //matrix contents
-	conMatrixColStart=new int[numVars+1]; //where each column of the matrix starts
-	conMatrixRowIndex=new int[nonZeros]; //row number of each element
-	oldRowIndex=new int[nonZeros]; //row number in old matrix
-	colStartCopy=new int[numVars+1]; //temporary copy of conMatrixColStart
-	for(rowIter=matrixIter=0;rowIter<numConstr;rowIter++) //assign row number to each element in old matrix
-		for(colIter=0;colIter<itemsPerRow[rowIter];colIter++,matrixIter++)
-			oldRowIndex[matrixIter]=rowIter;
-	for(colIter=0;colIter<=numVars;colIter++) //initialize to 0
-		conMatrixColStart[colIter]=0;
-	for(matrixIter=0;matrixIter<nonZeros;matrixIter++) //get number of elements in each column
-		conMatrixColStart[colIndex[matrixIter]]++;
-	for(colIter=1;colIter<=numVars;colIter++) //perfrom cumulative addition to get final data about where each column starts
-	{
-		conMatrixColStart[colIter]+=conMatrixColStart[colIter-1];
-		colStartCopy[colIter]=conMatrixColStart[colIter];
-	}
-	colStartCopy[0]=0;
-	for(matrixIter=0;matrixIter<nonZeros;matrixIter++) //move data from old matrix to new matrix
-	{
-		newPos=colStartCopy[colIndex[matrixIter]-1]++; //calculate its position in the new matrix
-		conMatrix[newPos]=data[matrixIter]; //move the data
-		conMatrixRowIndex[newPos]=oldRowIndex[matrixIter]; //assign it its row number
-	}
-	
-	retVal=commonCodePart2();
-	
-	//cleanup some more allocd memory
-	if(conMatrix) delete[] conMatrix;
-	if(oldRowIndex) delete[] oldRowIndex;
-	if(colStartCopy) delete[] colStartCopy;
-	
-	return retVal;
-}*/
 
 }

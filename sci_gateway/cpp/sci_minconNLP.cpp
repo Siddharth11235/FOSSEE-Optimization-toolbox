@@ -478,7 +478,6 @@ bool minconNLP::eval_h(Index n, const Number* x, bool new_x,Number obj_factor, I
 		
 
 		scilab_getDouble(env_, out[1], &check);
-		printf("Check = %d\n", check);
 		if (check==1)
 		{
 			return true;
@@ -499,7 +498,6 @@ bool minconNLP::eval_h(Index n, const Number* x, bool new_x,Number obj_factor, I
 				for (Index col=0; col < numVars_; ++col)
 				{
 					values[index++]=resCh[numVars_*row+col];
-					printf("hessian element [%d, %d] = %f\n",row, col, values[numVars_*row+col]);
 					
 				}
 			}

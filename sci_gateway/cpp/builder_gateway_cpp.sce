@@ -37,7 +37,7 @@ Function_Names = [
 
 		//problem loaders
 		"sym_loadProblemBasic","sci_sym_loadProblemBasic", "csci6";
-		//"sym_loadProblem","sci_sym_loadProblem";
+		//"sym_loadProblem","sci_sym_loadProblem", "csci";
 		
 		//solve
 		"sym_solve","sci_sym_solve", "csci6";
@@ -270,7 +270,7 @@ Function_Names = [
 
 		//problem loaders
 		"sym_loadProblemBasic","sci_sym_loadProblemBasic", "csci6";
-		//"sym_loadProblem","sci_sym_loadProblem";
+		//"sym_loadProblem","sci_sym_loadProblem", "csci6";
 		
 		//solve
 		"sym_solve","sci_sym_solve", "csci6";

@@ -10,7 +10,6 @@
 // Email: toolbox@scilab.in
 
 #include "minbndNLP.hpp"
-#include "sci_iofunc.hpp"
 
 extern "C"
 {
