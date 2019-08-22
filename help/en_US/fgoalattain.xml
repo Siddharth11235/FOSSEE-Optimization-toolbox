@@ -461,7 +461,7 @@ Options = list("MaxIter", [3000], "CpuTime", [600],"GradObj",myfungrad,"GradCon"
 // The initial guess
 
 // Run fgoalattain
-[x,fval,maxfval,exitflag,output] = fgoalattain(myfun,x0,goal,weight,[],[],[],[],[],[], confun, Options)
+[x,fval,maxfval,exitflag,output] = fgoalattain(gattainObjfun,x0,goal,weight,[],[],[],[],[],[], confun, Options)
    ]]></programlisting>
 </refsection>
 

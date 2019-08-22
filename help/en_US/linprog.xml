@@ -17,7 +17,7 @@
 
   <refnamediv>
     <refname>linprog</refname>
-    <refpurpose>Solves a linear programming problem.</refpurpose>
+    <refpurpose>Solves a linear optimization problem.</refpurpose>
   </refnamediv>
 
 

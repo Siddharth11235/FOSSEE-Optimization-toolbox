@@ -17,7 +17,7 @@
 
   <refnamediv>
     <refname>fminbnd</refname>
-    <refpurpose>Solves a multivariable optimization problem on a bounded interval</refpurpose>
+    <refpurpose>Solves a nonlinear optimization problem on bounded variables.</refpurpose>
   </refnamediv>
 
 

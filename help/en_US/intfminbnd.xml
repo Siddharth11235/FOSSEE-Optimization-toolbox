@@ -17,7 +17,7 @@
 
   <refnamediv>
     <refname>intfminbnd</refname>
-    <refpurpose>Solves a multivariable optimization problem on a bounded interval</refpurpose>
+    <refpurpose>Solves a mixed-integer nonlinear optimization problem on bounded variables.</refpurpose>
   </refnamediv>
 
 

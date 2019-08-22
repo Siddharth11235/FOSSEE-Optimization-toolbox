@@ -17,7 +17,7 @@
 
   <refnamediv>
     <refname>intfminimax</refname>
-    <refpurpose>Solves minimax constraint problem</refpurpose>
+    <refpurpose>Solves a mixed-integer minimax optimization problem.</refpurpose>
   </refnamediv>
 
 
